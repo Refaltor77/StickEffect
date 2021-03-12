@@ -1,0 +1,17 @@
+---
+# Welcome to StickEffect version 1.0.0
+# ---
+# the {time} notation in the "message" element allows you to take the time of the remaining cooldown
+# effect duration is for 20 = 1 second
+# the effect level is for 0 = 1 level so level 1 is finally equal to 2
+# the "visible" element allows to make appear or not the fantasy bubbles (true:false)
+
+369:
+  cooldown: 60
+  message: "you have {time} seconds left to use the stick"
+  effect:
+    1:
+      duration: 20
+      niveau: 0
+      visible: false
+...
