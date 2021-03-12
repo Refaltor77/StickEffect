@@ -5,4 +5,5 @@ branches:
 projects:
   StickEffect:
     path: ""
+    icon: icon.png
 ...
