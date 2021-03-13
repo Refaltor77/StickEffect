@@ -7,11 +7,20 @@
 # the "visible" element allows to make appear or not the fantasy bubbles (true:false)
 
 369:
-  cooldown: 60
+  cooldown: 60 # secondes 
   message: "you have {time} seconds left to use the stick"
   effect:
-    1:
-      duration: 20
+    1: # id effect (speed)
+      duration: 20 # ticks, 20 = 1 secondes
       niveau: 0
       visible: false
+ 
+336:
+  cooldown: 60 
+  message: "you have {time} seconds left to use the stick"
+  effect:
+    3: # id haste
+      duration: 20
+      niveau: 0
+      visible: true
 ...
