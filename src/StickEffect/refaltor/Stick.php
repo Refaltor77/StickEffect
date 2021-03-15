@@ -9,7 +9,7 @@ use StickEffect\refaltor\event\StickListener;
 class Stick extends PluginBase
 {
     /** @var Stick  */
-    public static Stick $instance;
+    public static $instance;
 
     public function onEnable()
     {
