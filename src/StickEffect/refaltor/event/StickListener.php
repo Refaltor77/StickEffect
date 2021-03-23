@@ -11,15 +11,15 @@ use StickEffect\refaltor\Stick;
 
 class StickListener implements Listener
 {
-    public $cooldown = [];
+    public array $cooldown = [];
     public function onInteract(PlayerInteractEvent $event){
         $player = $event->getPlayer();
         $item = $event->getItem();
         $all = Stick::getStick()->getConfig()->getAll();
         if ($player instanceof Player){
             $in = array_keys($all);
-            if (in_array($item->getId(), $in)){
-                $stick = $all[$item->getId()];
+            if (in_array("{$item->getId()}:{$item->getDamage()}", $in)){
+                $stick = $all["{$item->getId()}:{$item->getDamage()}"];
                 $effect = $stick["effect"];
                 if (!isset($this->cooldown[$player->getName()])) {
                     $this->cooldown[$player->getName()] = time() + $stick["cooldown"];
