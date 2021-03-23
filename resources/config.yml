@@ -6,7 +6,7 @@
 # the effect level is for 0 = 1 level so level 1 is finally equal to 2
 # the "visible" element allows to make appear or not the fantasy bubbles (true:false)
 
-369:
+"369:0":
   cooldown: 60 # secondes 
   message: "you have {time} seconds left to use the stick"
   effect:
@@ -15,7 +15,7 @@
       niveau: 0
       visible: false
  
-336:
+"336:0":
   cooldown: 60 
   message: "you have {time} seconds left to use the stick"
   effect:
