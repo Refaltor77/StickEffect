@@ -11,7 +11,7 @@ use StickEffect\refaltor\Stick;
 
 class StickListener implements Listener
 {
-    public array $cooldown = [];
+    public $cooldown = [];
     public function onInteract(PlayerInteractEvent $event){
         $player = $event->getPlayer();
         $item = $event->getItem();
