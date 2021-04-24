@@ -5,10 +5,12 @@
 # effect duration is for 20 = 1 second
 # the effect level is for 0 = 1 level so level 1 is finally equal to 2
 # the "visible" element allows to make appear or not the fantasy bubbles (true:false)
+# l'élement "remove" allows to remove the stick at each use
 
 "369:0":
   cooldown: 60 # secondes 
   message: "you have {time} seconds left to use the stick"
+  remove: true
   effect:
     1: # id effect (speed)
       duration: 20 # ticks, 20 = 1 secondes
@@ -18,6 +20,7 @@
 "336:0":
   cooldown: 60 
   message: "you have {time} seconds left to use the stick"
+  remove: true
   effect:
     3: # id haste
       duration: 20
