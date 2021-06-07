@@ -20,7 +20,7 @@ class StickListener implements Listener
         if ($player instanceof Player){
             $in = array_keys($all);
             if (in_array("{$item->getId()}:{$item->getDamage()}", $in)){
-                $stick = $all["{$item->getId()}:{$item->getDamage()}"];
+                $stick = key($all["{$item->getId()}:{$item->getDamage()}"]);
                 $explode = explode(":", $stick);
                 $effect = $stick["effect"];
                 $bool = $stick["remove"];
