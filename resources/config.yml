@@ -13,8 +13,8 @@
   remove: true
   effect:
     1: # id effect (speed)
-      duration: 20 # ticks, 20 = 1 secondes
-      niveau: 0
+      duration: 20 # ticks, 20 = 20 secondes
+      niveau: 1 = 1 lvl
       visible: false
  
 "336:0":
@@ -24,6 +24,6 @@
   effect:
     3: # id haste
       duration: 20
-      niveau: 0
+      niveau: 2
       visible: true
 ...
