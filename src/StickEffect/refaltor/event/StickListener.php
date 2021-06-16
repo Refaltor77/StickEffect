@@ -18,7 +18,7 @@ class StickListener implements Listener
         $item = $event->getItem();
         $all = Stick::getStick()->getConfig()->getAll();
         $in = array_keys($all);
-        if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK || $event->getAction() === PlayerInteractEvent::RIGHT_CLICK_AIR) {
+        if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
 			if (in_array("{$item->getId()}:{$item->getDamage()}", $in)) {
 				$stick = $all["{$item->getId()}:{$item->getDamage()}"];
 				$effect = $stick["effect"];
@@ -26,12 +26,12 @@ class StickListener implements Listener
 				if (!isset($this->cooldown[$player->getName()])) {
 					$this->cooldown[$player->getName()] = time() + intval($stick["cooldown"]);
 					foreach ($effect as $id => $values) {
-						$player->addEffect(new EffectInstance(Effect::getEffect($id), $values["duration"], $values["niveau"], $values["visible"]));
+						$player->addEffect(new EffectInstance(Effect::getEffect($id), $values["duration"] * 20, $values["niveau"] + 1, $values["visible"] ?? false));
 						if ($bool === true) $player->getInventory()->removeItem(Item::get($item->getId(), $item->getDamage()));
 					}
 				} elseif (time() < $this->cooldown[$player->getName()]) {
 					$time = $this->cooldown[$player->getName()] - time();
-					$player->sendMessage(str_replace("{time}", $time, $stick["message"]));
+					if (isset($stick["message"])) $player->sendMessage(str_replace("{time}", $time, $stick["message"]));
 				} else {
 					unset($this->cooldown[$player->getName()]);
 				}
