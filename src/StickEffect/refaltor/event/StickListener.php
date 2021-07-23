@@ -26,7 +26,7 @@ class StickListener implements Listener
 				if (!isset($this->cooldown[$player->getName()])) {
 					$this->cooldown[$player->getName()] = time() + intval($stick["cooldown"]);
 					foreach ($effect as $id => $values) {
-						$player->addEffect(new EffectInstance(Effect::getEffect($id), $values["duration"] * 20, $values["niveau"] + 1, $values["visible"] ?? false));
+						$player->addEffect(new EffectInstance(Effect::getEffect($id), intval($values["duration"]) * 20, intval($values["niveau"]) + 1, $values["visible"]));
 						if ($bool === true) $player->getInventory()->removeItem(Item::get($item->getId(), $item->getDamage()));
 					}
 				} elseif (time() < $this->cooldown[$player->getName()]) {
