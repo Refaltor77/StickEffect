@@ -1,4 +1,7 @@
 ---
+# DO NOT TOUCH !
+version: 3.0
+
 # Welcome to StickEffect version 1.0.0
 # ---
 # the {time} notation in the "message" element allows you to take the time of the remaining cooldown
@@ -11,16 +14,24 @@
   cooldown: 60 # secondes 
   message: "you have {time} seconds left to use the stick"
   remove: true
+  permission:
+    enable: false
+    perm: 'stick.use'
+    message_perm: "§cYou don’t have permission !"
   effect:
     1: # id effect (speed)
       duration: 20 # ticks, 20 = 20 secondes
       niveau: 1 = 1 lvl
       visible: false
- 
+
 "336:0":
-  cooldown: 60 
+  cooldown: 60
   message: "you have {time} seconds left to use the stick"
   remove: true
+  permission:
+    enable: true
+    perm: 'stick2.use'
+    message_perm: "§cYou don’t have permission !"
   effect:
     3: # id haste
       duration: 20
