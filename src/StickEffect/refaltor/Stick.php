@@ -36,7 +36,7 @@ class Stick extends PluginBase
         return self::$instance;
     }
 
-    public function onEnable()
+    protected function onEnable(): void
     {
         if (!$this->getConfig()->exists('version')) {
             rename($this->getDataFolder() . 'config.yml', $this->getDataFolder() . 'old_config.yml');

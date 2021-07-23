@@ -1,6 +1,6 @@
 name: StickEffect
 version: 4.0.0
 author: refaltor
-api: 3.0.0
+api: 4.0.0
 main: StickEffect\refaltor\Stick
 website: https://discord.gg/PgGRZdZv

@@ -2,11 +2,13 @@
 
 namespace StickEffect\refaltor\event;
 
-use pocketmine\entity\Effect;
-use pocketmine\entity\EffectInstance;
+use pocketmine\data\bedrock\EffectIdMap;
+use pocketmine\entity\effect\Effect;
+use pocketmine\entity\effect\EffectInstance;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 use StickEffect\refaltor\Stick;
 
 class StickListener implements Listener
@@ -20,8 +22,8 @@ class StickListener implements Listener
         $all = Stick::getStick()->getConfig()->getAll();
         $in = array_keys($all);
         if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-            if (in_array("{$item->getId()}:{$item->getDamage()}", $in)) {
-                $stick = $all["{$item->getId()}:{$item->getDamage()}"];
+            if (in_array("{$item->getId()}:{$item->getMeta()}", $in)) {
+                $stick = $all["{$item->getId()}:{$item->getMeta()}"];
                 $effect = $stick["effect"];
                 $bool = $stick["remove"];
 
@@ -37,8 +39,8 @@ class StickListener implements Listener
                 if (!isset($this->time[$player->getName()])) {
                     $this->time[$player->getName()] = time() + intval($stick["cooldown"]);
                     foreach ($effect as $id => $values) {
-                        $player->addEffect(new EffectInstance(Effect::getEffect($id), intval($values["duration"]) * 20, intval($values["niveau"]) + 1, $values["visible"]));
-                        if ($bool === true) $player->getInventory()->removeItem(Item::get($item->getId(), $item->getDamage()));
+                        $player->getEffects()->add(new EffectInstance(EffectIdMap::getInstance()->fromId($id), intval($values["duration"]) * 20, intval($values["niveau"]) + 1, $values["visible"]));
+                        if ($bool === true) $player->getInventory()->removeItem(VanillaItems::fromString($item->getId() . ':' . $item->getMeta()));
                     }
                 } elseif (time() < $this->time[$player->getName()]) {
                     $time = $this->time[$player->getName()] - time();
