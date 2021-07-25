@@ -16,7 +16,7 @@ version: 3.0
   remove: true
   permission:
     enable: false
-    perm: 'stick.use'
+    perm: 'StickEffect.1.use'
     message_perm: "§cYou don’t have permission !"
   effect:
     1: # id effect (speed)
@@ -30,7 +30,7 @@ version: 3.0
   remove: true
   permission:
     enable: true
-    perm: 'stick2.use'
+    perm: 'StickEffect.2.use'
     message_perm: "§cYou don’t have permission !"
   effect:
     3: # id haste
