@@ -8,7 +8,7 @@ use pocketmine\entity\effect\EffectInstance;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
-use pocketmine\item\VanillaItems;
+use pocketmine\item\ItemFactory;
 use StickEffect\refaltor\Stick;
 
 class StickListener implements Listener
@@ -40,7 +40,7 @@ class StickListener implements Listener
                     $this->time[$player->getName()] = time() + intval($stick["cooldown"]);
                     foreach ($effect as $id => $values) {
                         $player->getEffects()->add(new EffectInstance(EffectIdMap::getInstance()->fromId($id), intval($values["duration"]) * 20, intval($values["niveau"]) + 1, $values["visible"]));
-                        if ($bool === true) $player->getInventory()->removeItem(VanillaItems::fromString($item->getId() . ':' . $item->getMeta()));
+                        if ($bool === true) $player->getInventory()->removeItem(ItemFactory::getInstance()->get($item->getId(), $item->getMeta()));
                     }
                 } elseif (time() < $this->time[$player->getName()]) {
                     $time = $this->time[$player->getName()] - time();
